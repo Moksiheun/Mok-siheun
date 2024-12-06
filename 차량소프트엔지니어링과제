@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+
+int main() {
+    double weight, height, bmi;
+
+    // 사용자로부터 체중과 신장을 입력받음
+    std::cout << "체중(kg)을 입력하세요: ";
+    std::cin >> weight;
+    std::cout << "신장(m)을 입력하세요: ";
+    std::cin >> height;
+
+    // 유효성 검사: 신장이 0 이하인 경우 오류 메시지 출력
+    if (height <= 0) {
+        std::cerr << "오류: 신장은 0보다 커야 합니다." << std::endl;
+        return 1;
+    }
+
+    // BMI 계산
+    bmi = weight / (height * height);
+
+    // BMI 결과 출력 (소수점 둘째 자리까지)
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "당신의 BMI는 " << bmi << "입니다." << std::endl;
+
+    // 건강 상태 평가
+    if (bmi < 18.5) {
+        std::cout << "저체중" << std::endl;
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        std::cout << "정상 체중" << std::endl;
+    } else if (bmi >= 25 && bmi < 29.9) {
+        std::cout << "과체중" << std::endl;
+    } else {
+        std::cout << "비만" << std::endl;
+    }
+
+    return 0;
+}
